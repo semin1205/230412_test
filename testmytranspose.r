@@ -1,14 +1,18 @@
 library(testthat)
 
-
+# mytranspose 함수를 포함한 mytranspose.R 파일을 불러온다
 source("mytranspose.R")
 
 # matrix 테스트
+myvar1 <- matrix(1:10, nrow=5, ncol=2)
+myvar2 <- matrix(NA, nrow=0, ncol=0)
 myvar3 <- matrix(c(1,2), nrow=1, ncol=2)
 myvar4 <- matrix(c(1,2), nrow=2, ncol=1)
 
 # matrix - mytranspose 테스트
 test_that("mytranspose should work for matrix input", {
+  expect_equal(mytranspose(myvar1), t(myvar1))
+  expect_equal(mytranspose(myvar2), t(myvar2))
   expect_equal(mytranspose(myvar3), t(myvar3))
   expect_equal(mytranspose(myvar4), t(myvar4))
 })
